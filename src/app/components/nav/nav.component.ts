@@ -13,11 +13,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
+import { Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatCardModule, MatButtonModule],
+  imports: [RouterOutlet, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatCardModule, MatButtonModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
@@ -25,10 +27,10 @@ export class NavComponent {
 
   showFiller = false;
 
-  constructor(){}
+  constructor(private router: Router){}
 
   ngOnInit(): void{
-
+    this.router.navigate(['home']);
   }
 
   logout(): void {
