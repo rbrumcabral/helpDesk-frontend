@@ -19,7 +19,7 @@ import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
-  selector: 'app-nav',
+  selector: 'app-tecnico-list',
   standalone: true,
   imports: [RouterOutlet, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatCardModule, MatButtonModule, HeaderComponent, RouterLink],
   templateUrl: './nav.component.html',
@@ -32,7 +32,7 @@ export class NavComponent {
   constructor(private router: Router){}
 
   ngOnInit(): void{
-    this.router.navigate(['home']);
+    this.router.navigate(['tecnicos']);
   }
 
   logout(): void {
