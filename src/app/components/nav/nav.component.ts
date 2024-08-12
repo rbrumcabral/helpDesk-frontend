@@ -15,12 +15,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatRadioModule } from '@angular/material/radio';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [RouterOutlet, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatCardModule, MatButtonModule, HeaderComponent],
+  imports: [RouterOutlet, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatCardModule, MatButtonModule, HeaderComponent, RouterLink],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
