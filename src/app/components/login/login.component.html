@@ -5,16 +5,33 @@
         <img src="assets/img/login-image.svg" alt="Imagem de tela de login">
         <mat-form-field class="email-input full-width">
             <mat-label>E-mail</mat-label>
-            <input matInput placeholder="seunome@mail.com">
+            <input 
+            [formControl]="email"
+            [(ngModel)]="credenciais.email" 
+            name="email" 
+            matInput 
+            placeholder="seunome@mail.com">
         </mat-form-field>
 
         <mat-form-field class="password-input full-width">
             <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="Digite sua senha" matInput
-                [type]="passwordVisible ? 'text' : 'password'">
+            <input 
+            [formControl]="senha"
+            [(ngModel)]="credenciais.senha" 
+            name="senha" 
+            type="password"
+            matInput placeholder="Digite sua senha" 
+            matInput
+            [type]="passwordVisible ? 'text' : 'password'">
+            
             <mat-icon class="password-visible" matSuffix (click)="togglePasswordVisibility()"> {{passwordVisible ?
                 'visibility' : 'visibility_off'}}</mat-icon>
         </mat-form-field>
-        <button mat-stroked-button class="full-width mat-elevation-z4">Login</button>
+
+        <button 
+        [disabled]="!validaCampos()"
+        mat-stroked-button class="full-width mat-elevation-z4">
+        Login
+        </button>
     </form>
 </div>
