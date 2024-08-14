@@ -37,12 +37,9 @@ export class LoginComponent {
   );
 
   validaCampos(): boolean {
-    if (this.email.valid && this.senha.valid) {
-      return true;
-    }
-    return false;
+    return (this.email.valid && this.senha.valid);
   }
-
+  
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
