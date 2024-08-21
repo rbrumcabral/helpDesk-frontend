@@ -57,7 +57,7 @@ export class LoginComponent {
 
   logar(){
     this.service.authenticate(this.credenciais).subscribe( response => {
-      this.service.sucessfulLogin(JSON.parse(response.body).accessToken);
+      this.service.successfulLogin(JSON.parse(response.body).accessToken);
       this.router.navigate(['home']);
     }, 
     () => {
