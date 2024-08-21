@@ -32,7 +32,7 @@ export class NavComponent {
   constructor(private router: Router){}
 
   ngOnInit(): void{
-    this.router.navigate(['login']);
+    
   }
 
   logout(): void {

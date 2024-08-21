@@ -5,13 +5,13 @@
         <img src="assets/img/login-image.svg" alt="Imagem de tela de login">
         <mat-form-field class="email-input full-width">
             <mat-label>E-mail</mat-label>
-            <input [formControl]="email" [(ngModel)]="credenciais.email" name="email" matInput
+            <input [formControl]="username" [(ngModel)]="credenciais.username" name="email" matInput
                 placeholder="seunome@mail.com">
         </mat-form-field>
 
         <mat-form-field class="password-input full-width">
             <mat-label>Senha</mat-label>
-            <input [formControl]="senha" [(ngModel)]="credenciais.senha" name="senha" type="password" matInput
+            <input [formControl]="password" [(ngModel)]="credenciais.password" name="senha" type="password" matInput
                 placeholder="Digite sua senha" matInput [type]="passwordVisible ? 'text' : 'password'">
 
             <mat-icon class="password-visible" matSuffix (click)="togglePasswordVisibility()"> {{passwordVisible ?

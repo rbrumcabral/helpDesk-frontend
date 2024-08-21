@@ -6,6 +6,8 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,28 +20,31 @@ import { ToastrService } from 'ngx-toastr';
 
 export class LoginComponent {
 
-  constructor(private toastr: ToastrService) {
+  constructor(
+    private toastr: ToastrService,
+    private service: AuthService, 
+    private router: Router) {
     this.toastrConfig();
   }
 
   passwordVisible: boolean = false;
 
   credenciais = {
-    email: '',
-    senha: ''
+    username: '',
+    password: ''
   }
 
-  email = new FormControl(null, Validators.email);
-  senha = new FormControl(null,
+  username = new FormControl(null, Validators.email);
+  password = new FormControl(null,
     [Validators.minLength(3),
     Validators.required
     ]
   );
 
   validaCampos(): boolean {
-    return (this.email.valid && this.senha.valid);
+    return (this.username.valid && this.password.valid);
   }
-  
+
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
@@ -51,7 +56,12 @@ export class LoginComponent {
   }
 
   logar(){
-    this.toastr.error('Usuário e/ou senha inválidos!', "Login");
-    this.credenciais.senha = '';
+    this.service.authenticate(this.credenciais).subscribe( response => {
+      this.service.sucessfulLogin(JSON.parse(response.body).accessToken);
+      this.router.navigate(['home']);
+    }, 
+    () => {
+      this.toastr.error("Usuário e/ou senha incorretos!");  
+    });
   }
 }
