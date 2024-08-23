@@ -4,7 +4,8 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { Tecnico } from '../../../models/tecnico';
+import {Technician } from '../../../models/technician';
+import {TechnicianService } from '../../../services/technician.service';
 
 @Component({
   selector: 'tecnico-list',
@@ -16,28 +17,18 @@ import { Tecnico } from '../../../models/tecnico';
 
 export class TecnicoListComponent implements AfterViewInit {
 
-  UserData: Tecnico[] = [
-    {
-      id: 1,
-      nome: 'Arthur Coimbra',
-      cpf: '45698523675',
-      email: 'zico@mail',
-      senha: '1234',
-      perfis: ['0'],
-      dataCriacao: '12/08/2024'
-    }
-  ];
-
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
-  dataSource: MatTableDataSource<Tecnico>;
+  dataSource: MatTableDataSource<Technician> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
-    // Create 100 users
-    const users = this.UserData;
-    this.dataSource = new MatTableDataSource(users);
+  constructor(
+    private service: TechnicianService
+  ) {  }
+
+  ngOnInit(): void {
+    this.findAll();
   }
 
   ngAfterViewInit() {
@@ -53,4 +44,14 @@ export class TecnicoListComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  findAll(){
+    this.service.findAll().subscribe({
+    next: (response) => {
+      this.dataSource = new MatTableDataSource(response);
+    },
+    error: (error) => {
+      console.error("ERRO NA REQUISIÇÃO:", error)
+    }
+  })}
 }
