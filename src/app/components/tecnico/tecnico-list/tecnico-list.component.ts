@@ -6,13 +6,16 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {Technician } from '../../../models/technician';
 import {TechnicianService } from '../../../services/technician.service';
+import { ToastrService } from 'ngx-toastr';
+import {MatButtonModule} from '@angular/material/button'; 
 
 @Component({
   selector: 'tecnico-list',
   templateUrl: './tecnico-list.component.html',
   styleUrl: './tecnico-list.component.css',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule],
+  providers: [ToastrService]
 })
 
 export class TecnicoListComponent implements AfterViewInit {
@@ -24,8 +27,11 @@ export class TecnicoListComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private service: TechnicianService
-  ) {  }
+    private service: TechnicianService,
+    private toastr: ToastrService
+  ) { 
+    this.toastrConfig();
+   }
 
   ngOnInit(): void {
     this.findAll();
@@ -49,9 +55,16 @@ export class TecnicoListComponent implements AfterViewInit {
     this.service.findAll().subscribe({
     next: (response) => {
       this.dataSource = new MatTableDataSource(response);
+      this.dataSource.paginator = this.paginator;
     },
     error: (error) => {
-      console.error("ERRO NA REQUISIÇÃO:", error)
+      this.toastr.error("Erro ao buscar");
     }
   })}
+
+  toastrConfig(){
+    this.toastr.toastrConfig.timeOut = 4000;
+    this.toastr.toastrConfig.closeButton = true; 
+    this.toastr.toastrConfig.progressBar = true;
+  }
 }
