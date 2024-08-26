@@ -8,13 +8,15 @@ import {Technician } from '../../../models/technician';
 import {TechnicianService } from '../../../services/technician.service';
 import { ToastrService } from 'ngx-toastr';
 import {MatButtonModule} from '@angular/material/button'; 
+import { Router } from 'express';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'technician-list',
   templateUrl: './technician-list.component.html',
   styleUrl: './technician-list.component.css',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule, RouterLink],
   providers: [ToastrService]
 })
 
