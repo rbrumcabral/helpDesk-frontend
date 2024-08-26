@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { API_CONFIG } from '../config/api.config';
 import { Observable } from 'rxjs';
+import { API_CONFIG } from '../config/api.config';
 import { Technician } from '../models/technician';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Technician } from '../models/technician';
 })
 export class TechnicianService {
 
-  constructor(private http: HttpClient){ }
+  constructor(private http: HttpClient) { }
 
   findAll(): Observable<Technician[]> {
     return this.http.get<Technician[]>(`${API_CONFIG.baseUrl}/technician`);

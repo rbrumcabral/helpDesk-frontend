@@ -1,9 +1,9 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { Credentials } from '../models/credentials';
-import { HttpClient } from '@angular/common/http';
-import { API_CONFIG } from '../config/api.config';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { API_CONFIG } from '../config/api.config';
+import { Credentials } from '../models/credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class AuthService {
 
   jwtService: JwtHelperService = new JwtHelperService();
 
-  constructor(private http: HttpClient, 
-             @Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object) { }
 
   authenticate(credenciais: Credentials) {
     return this.http.post(`${API_CONFIG.baseUrl}/login`, credenciais, {
