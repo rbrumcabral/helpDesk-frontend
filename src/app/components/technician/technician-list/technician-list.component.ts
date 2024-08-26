@@ -1,15 +1,14 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {Technician } from '../../../models/technician';
-import {TechnicianService } from '../../../services/technician.service';
-import { ToastrService } from 'ngx-toastr';
-import {MatButtonModule} from '@angular/material/button'; 
-import { Router } from 'express';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Technician } from '../../../models/technician';
+import { TechnicianService } from '../../../services/technician.service';
 
 @Component({
   selector: 'technician-list',
@@ -31,9 +30,9 @@ export class TechnicianListComponent implements AfterViewInit {
   constructor(
     private service: TechnicianService,
     private toastr: ToastrService
-  ) { 
+  ) {
     this.toastrConfig();
-   }
+  }
 
   ngOnInit(): void {
     this.findAll();
@@ -53,20 +52,21 @@ export class TechnicianListComponent implements AfterViewInit {
     }
   }
 
-  findAll(){
+  findAll() {
     this.service.findAll().subscribe({
-    next: (response) => {
-      this.dataSource = new MatTableDataSource(response);
-      this.dataSource.paginator = this.paginator;
-    },
-    error: (error) => {
-      this.toastr.error("Erro ao buscar");
-    }
-  })}
+      next: (response) => {
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator;
+      },
+      error: (error) => {
+        this.toastr.error("Erro ao buscar");
+      }
+    })
+  }
 
-  toastrConfig(){
+  toastrConfig() {
     this.toastr.toastrConfig.timeOut = 4000;
-    this.toastr.toastrConfig.closeButton = true; 
+    this.toastr.toastrConfig.closeButton = true;
     this.toastr.toastrConfig.progressBar = true;
   }
 }
