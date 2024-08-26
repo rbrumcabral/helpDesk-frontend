@@ -1,1 +1,41 @@
-<p>technician-create works!</p>
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="header-create fullWidth"> Cadastrar Técnico </h1>
+        <img src="assets/img/tecnico-create.svg" class="fullWidth" alt="imagem de fundo">
+
+        <section class="type-user">
+            <mat-checkbox [formControl]="adminType" color="primary"> Admin </mat-checkbox>
+            <mat-checkbox [formControl]="clientType" color="primary"> Client </mat-checkbox>
+            <mat-checkbox [formControl]="technicianType" color="primary"> Technician </mat-checkbox>
+        </section>
+
+        <mat-form-field class="user-input fullWidth" appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput [formControl]="name" maxlength="50" placeholder="Nome completo">
+        </mat-form-field>
+
+        <mat-form-field class="user-input fullWidth" appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput [formControl]="cpf" mask="000.000.000-00" placeholder="CPF (Somente números)">
+        </mat-form-field>
+
+        <mat-form-field class="user-input fullWidth" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput [formControl]="email" type="email" placeholder="Ex.: fulano@ciclano.com">
+        </mat-form-field>
+
+        <mat-form-field class="user-input fullWidth" appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input matInput [formControl]="password" type="password" placeholder="Mínimo: 8 caracteres">
+        </mat-form-field>
+
+        <mat-form-field class="user-input fullWidth" appearance="fill">
+            <mat-label>Confirme sua senha</mat-label>
+            <input matInput [formControl]="confirmPassword" type="password" placeholder="Repita sua senha">
+        </mat-form-field>
+
+        <button [disabled]="!validaCampos()" class="fullWidth" mat-flat-button color="primary"> Cadastrar </button>
+        <button routerLink="../" class="fullWidth" mat-stroked-button color="warn"> Cancelar </button>
+
+    </form>
+</div>
