@@ -56,6 +56,7 @@ export class TechnicianListComponent implements AfterViewInit {
     this.service.findAll().subscribe({
       next: (response) => {
         this.dataSource = new MatTableDataSource(response);
+        this.paginator.pageSize=10;
         this.dataSource.paginator = this.paginator;
       },
       error: (error) => {

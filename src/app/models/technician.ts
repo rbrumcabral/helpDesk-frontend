@@ -3,7 +3,7 @@ export interface Technician {
     name: string;
     cpf: string;
     email: string;
-    passwords: string;
+    password: string;
     profiles: string[];
     creationDate: any;
 }
