@@ -65,6 +65,13 @@ export class TechnicianListComponent implements AfterViewInit {
     })
   }
 
+  formatCPF(cpf: string): string {
+    if (!cpf) return '';
+    return cpf.replace(/(\d{3})(\d)/, '$1.$2')
+              .replace(/(\d{3})(\d)/, '$1.$2')
+              .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  }
+
   toastrConfig() {
     this.toastr.toastrConfig.timeOut = 4000;
     this.toastr.toastrConfig.closeButton = true;
