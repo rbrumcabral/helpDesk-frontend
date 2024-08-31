@@ -9,7 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from '../../../models/client';
-import { ClientService } from '../../../services/client.service';
+import { ClientService } from '../../../services/client/client.service';
 
 @Component({
   selector: 'app-client-create',

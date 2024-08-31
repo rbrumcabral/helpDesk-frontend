@@ -8,7 +8,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from '../../../models/client';
-import { ClientService } from '../../../services/client.service';
+import { ClientService } from '../../../services/client/client.service';
 
 @Component({
   selector: 'client-list',

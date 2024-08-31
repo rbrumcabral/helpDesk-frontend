@@ -2,8 +2,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { API_CONFIG } from '../config/api.config';
-import { Credentials } from '../models/credentials';
+import { API_CONFIG } from '../../config/api.config';
+import { Credentials } from '../../models/credentials';
 
 @Injectable({
   providedIn: 'root'

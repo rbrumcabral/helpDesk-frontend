@@ -7,7 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({

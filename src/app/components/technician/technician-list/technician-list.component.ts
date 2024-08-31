@@ -8,7 +8,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Technician } from '../../../models/technician';
-import { TechnicianService } from '../../../services/technician.service';
+import { TechnicianService } from '../../../services/technician/technician.service';
 
 @Component({
   selector: 'technician-list',

@@ -9,7 +9,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { Technician } from '../../../models/technician';
-import { TechnicianService } from '../../../services/technician.service';
+import { TechnicianService } from '../../../services/technician/technician.service';
 
 @Component({
   selector: 'app-technician-delete',
