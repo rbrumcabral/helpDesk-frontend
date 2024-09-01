@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { ClientService } from '../../../services/client/client.service';
 @Component({
   selector: 'app-client-create',
   standalone: true,
-  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective],
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
   providers: [provideNgxMask(), ToastrService],
   templateUrl: './client-create.component.html',
   styleUrl: './client-create.component.css',
@@ -30,7 +30,7 @@ export class ClientCreateComponent {
     'cpf': '',
     'email': '',
     'password': '',
-    'profiles': [],
+    'profile': '',
     'creationDate': ''
   }
 
@@ -42,7 +42,7 @@ export class ClientCreateComponent {
   ) {
     this.toastrConfig();
     this.form = this.fb.group({
-      adminType: ['',],
+      profile: ['DEFAULT',],
       name: ['', [Validators.minLength(6), Validators.required]],
       cpf: ['', [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
       email: ['', [Validators.email, Validators.required]],
@@ -65,7 +65,7 @@ export class ClientCreateComponent {
       },
       error: (error) => {
         this.toastr.error("Falha ao criar o usuário", "Erro");
-        if(error.error.errors){
+        if (error.error.errors) {
           error.error.errors.forEach(element => {
             this.toastr.error(element.message);
           });
@@ -82,11 +82,7 @@ export class ClientCreateComponent {
     this.client.cpf = this.form.get('cpf').value;
     this.client.email = this.form.get('email').value;
     this.client.password = this.form.get('password').value;
-
-    if (this.form.get('adminType').value) {
-      this.client.profiles.push('0');
-    }
-
+    this.client.profile = this.form.get('profile').value; 
   }
 
   toastrConfig() {

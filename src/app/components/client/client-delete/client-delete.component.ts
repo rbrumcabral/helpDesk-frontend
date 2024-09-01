@@ -5,6 +5,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +15,7 @@ import { ClientService } from '../../../services/client/client.service';
 @Component({
   selector: 'app-client-delete',
   standalone: true,
-  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective],
+  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
   providers: [provideNgxMask(), ToastrService],
   templateUrl: './client-delete.component.html',
   styleUrl: './client-delete.component.css',
@@ -29,7 +30,7 @@ export class ClientDeleteComponent {
     'cpf': '',
     'email': '',
     'password': '',
-    'profiles': [],
+    'profile': '',
     'creationDate': ''
   }
 
@@ -42,7 +43,7 @@ export class ClientDeleteComponent {
   ) {
     this.toastrConfig();
     this.form = this.fb.group({
-      adminType: [{ value: false, disabled: true }],
+      profile: ['', ],
       name: ['', [Validators.minLength(6), Validators.required]],
       cpf: ['', [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
       email: ['', [Validators.email, Validators.required]],
@@ -94,14 +95,8 @@ export class ClientDeleteComponent {
     this.form.get('name').setValue(this.client.name);
     this.form.get('cpf').setValue(this.client.cpf);
     this.form.get('email').setValue(this.client.email);
+    this.form.get('profile').setValue(this.client.profile);
     this.form.get('password').setValue("");
-
-    this.form.get('adminType').setValue(false);
-
-    if (this.client.profiles.includes('ADMIN')) {
-      this.form.get('adminType').setValue(true);
-    }
-
   }
 
   toastrConfig() {

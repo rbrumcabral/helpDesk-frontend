@@ -15,7 +15,7 @@ import { TechnicianService } from '../../../services/technician/technician.servi
   templateUrl: './technician-list.component.html',
   styleUrl: './technician-list.component.css',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule, RouterLink],
+  imports: [MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule, RouterLink],
   providers: [ToastrService]
 })
 

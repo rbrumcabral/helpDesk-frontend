@@ -3,10 +3,12 @@
         <h1 class="header-create fullWidth"> Deletar técnico </h1>
         <img src="assets/img/tecnico-create.svg" class="fullWidth" alt="imagem de fundo">
 
-        <section readonly class="type-user">
-            <mat-checkbox [disabled]="true" formControlName="adminType" color="primary"> Admin </mat-checkbox>
-            <mat-checkbox [disabled]="true" formControlName="clientType" color="primary"> Cliente </mat-checkbox>
-            <mat-checkbox [disabled]="true" formControlName="technicianType" color="primary"> Técnico </mat-checkbox>
+        <section>
+            <mat-radio-group class="type-user" formControlName="profile" aria-label="Perfil">
+                <mat-radio-button value="ADMIN" color="primary"> Admin </mat-radio-button>
+                <mat-radio-button value="DEFAULT" color="primary"> Padrão </mat-radio-button>
+                <mat-radio-button value="READONLY" color="primary"> Apenas leitura </mat-radio-button>
+            </mat-radio-group>
         </section>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">

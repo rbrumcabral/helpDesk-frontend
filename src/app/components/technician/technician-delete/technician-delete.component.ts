@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { TechnicianService } from '../../../services/technician/technician.servi
 @Component({
   selector: 'app-technician-delete',
   standalone: true,
-  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective],
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
   providers: [provideNgxMask(), ToastrService],
   templateUrl: './technician-delete.component.html',
   styleUrl: './technician-delete.component.css',
@@ -29,7 +29,7 @@ export class TechnicianDeleteComponent {
     'cpf': '',
     'email': '',
     'password': '',
-    'profiles': [],
+    'profile': '',
     'creationDate': ''
   }
 
@@ -42,9 +42,7 @@ export class TechnicianDeleteComponent {
   ) {
     this.toastrConfig();
     this.form = this.fb.group({
-      adminType: [{ value: false, disabled: true }],
-      clientType: [{ value: false, disabled: true }],
-      technicianType: [{ value: false, disabled: true }],
+      profile: ['',],
       name: ['', [Validators.minLength(6), Validators.required]],
       cpf: ['', [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
       email: ['', [Validators.email, Validators.required]],
@@ -96,23 +94,8 @@ export class TechnicianDeleteComponent {
     this.form.get('name').setValue(this.technician.name);
     this.form.get('cpf').setValue(this.technician.cpf);
     this.form.get('email').setValue(this.technician.email);
+    this.form.get('profile').setValue(this.technician.profile);
     this.form.get('password').setValue("");
-
-    this.form.get('adminType').setValue(false);
-    this.form.get('clientType').setValue(false);
-    this.form.get('technicianType').setValue(false);
-
-    if (this.technician.profiles.includes('ADMIN')) {
-      this.form.get('adminType').setValue(true);
-    }
-
-    if (this.technician.profiles.includes('CLIENT')) {
-      this.form.get('clientType').setValue(true);
-    }
-
-    if (this.technician.profiles.includes('TECHNICIAN')) {
-      this.form.get('technicianType').setValue(true);
-    }
   }
 
   toastrConfig() {

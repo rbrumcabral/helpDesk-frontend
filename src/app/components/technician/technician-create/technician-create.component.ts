@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { TechnicianService } from '../../../services/technician/technician.servi
 @Component({
   selector: 'app-technician-create',
   standalone: true,
-  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective],
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
   providers: [provideNgxMask(), ToastrService],
   templateUrl: './technician-create.component.html',
   styleUrl: './technician-create.component.css',
@@ -30,7 +30,7 @@ export class TechnicianCreateComponent {
     'cpf': '',
     'email': '',
     'password': '',
-    'profiles': [],
+    'profile': '',
     'creationDate': ''
   }
 
@@ -42,9 +42,7 @@ export class TechnicianCreateComponent {
   ) {
     this.toastrConfig();
     this.form = this.fb.group({
-      adminType: ['',],
-      clientType: ['',],
-      technicianType: ['',],
+      profile: ['',],
       name: ['', [Validators.minLength(6), Validators.required]],
       cpf: ['', [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
       email: ['', [Validators.email, Validators.required]],
@@ -55,11 +53,7 @@ export class TechnicianCreateComponent {
 
   validaCampos(): boolean {
     return this.form.get('name').valid && this.form.get('cpf').valid && this.form.get('email').valid && this.form.get('password').valid
-      && this.form.get('password').value === this.form.get('confirmPassword').value && this.atLeastOneTypeChecked();
-  }
-
-  atLeastOneTypeChecked(): boolean {
-    return this.form.get('adminType').value || this.form.get('clientType').value || this.form.get('technicianType').value;
+      && this.form.get('password').value === this.form.get('confirmPassword').value;
   }
 
   create(): void {
@@ -71,7 +65,7 @@ export class TechnicianCreateComponent {
       },
       error: (error) => {
         this.toastr.error("Falha ao criar o usuário", "Erro");
-        if(error.error.errors){
+        if (error.error.errors) {
           error.error.errors.forEach(element => {
             this.toastr.error(element.message);
           });
@@ -88,18 +82,7 @@ export class TechnicianCreateComponent {
     this.technician.cpf = this.form.get('cpf').value;
     this.technician.email = this.form.get('email').value;
     this.technician.password = this.form.get('password').value;
-
-    if (this.form.get('adminType').value) {
-      this.technician.profiles.push('0');
-    }
-
-    if (this.form.get('clientType').value) {
-      this.technician.profiles.push('1');
-    }
-
-    if (this.form.get('technicianType').value) {
-      this.technician.profiles.push('2');
-    }
+    this.technician.profile = this.form.get('profile').value; 
   }
 
   toastrConfig() {

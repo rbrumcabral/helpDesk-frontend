@@ -3,8 +3,12 @@
         <h1 class="header-create fullWidth"> Atualizar cliente </h1>
         <img src="assets/img/tecnico-create.svg" class="fullWidth" alt="imagem de fundo">
 
-        <section class="type-user">
-            <mat-checkbox formControlName="adminType" color="primary"> Admin </mat-checkbox>
+        <section>
+            <mat-radio-group class="type-user" formControlName="profile" aria-label="Perfil">
+                <mat-radio-button value="ADMIN" color="primary"> Admin </mat-radio-button>
+                <mat-radio-button value="DEFAULT" color="primary"> Padrão </mat-radio-button>
+                <mat-radio-button value="READONLY" color="primary"> Apenas leitura </mat-radio-button>
+            </mat-radio-group>
         </section>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">

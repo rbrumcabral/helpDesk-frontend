@@ -5,6 +5,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
@@ -16,7 +17,7 @@ import { TechnicianService } from '../../../services/technician/technician.servi
   standalone: true,
   templateUrl: './technician-update.component.html',
   styleUrl: './technician-update.component.css',
-  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective],
+  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
   providers: [provideNgxMask(), ToastrService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -30,7 +31,7 @@ export class TechnicianUpdateComponent {
     'cpf': '',
     'email': '',
     'password': '',
-    'profiles': [],
+    'profile': '',
     'creationDate': ''
   }
 
@@ -43,9 +44,7 @@ export class TechnicianUpdateComponent {
   ) {
     this.toastrConfig();
     this.form = this.fb.group({
-      adminType: ['',],
-      clientType: ['',],
-      technicianType: ['',],
+      profile: ['',],
       name: ['', [Validators.minLength(6), Validators.required]],
       cpf: ['', [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
       email: ['', [Validators.email, Validators.required]],
@@ -56,11 +55,7 @@ export class TechnicianUpdateComponent {
 
   validaCampos(): boolean {
     return this.form.get('name').valid && this.form.get('cpf').valid && this.form.get('email').valid && this.form.get('password').valid
-      && this.form.get('password').value === this.form.get('confirmPassword').value && this.atLeastOneTypeChecked();
-  }
-
-  atLeastOneTypeChecked(): boolean {
-    return this.form.get('adminType').value || this.form.get('clientType').value || this.form.get('technicianType').value;
+      && this.form.get('password').value === this.form.get('confirmPassword').value;
   }
 
   ngOnInit() {
@@ -108,41 +103,15 @@ export class TechnicianUpdateComponent {
     this.technician.cpf = this.form.get('cpf').value;
     this.technician.email = this.form.get('email').value;
     this.technician.password = this.form.get('password').value;
-
-    if (this.form.get('adminType').value) {
-      this.technician.profiles.push('0');
-    }
-
-    if (this.form.get('clientType').value) {
-      this.technician.profiles.push('1');
-    }
-
-    if (this.form.get('technicianType').value) {
-      this.technician.profiles.push('2');
-    }
+    this.technician.profile = this.form.get('profile').value; 
   }
 
   fillForm() {
     this.form.get('name').setValue(this.technician.name);
     this.form.get('cpf').setValue(this.technician.cpf);
     this.form.get('email').setValue(this.technician.email);
+    this.form.get('profile').setValue(this.technician.profile);
     this.form.get('password').setValue("");
-
-    this.form.get('adminType').setValue(false);
-    this.form.get('clientType').setValue(false);
-    this.form.get('technicianType').setValue(false);
-
-    if (this.technician.profiles.includes('ADMIN')) {
-      this.form.get('adminType').setValue(true);
-    }
-
-    if (this.technician.profiles.includes('CLIENT')) {
-      this.form.get('clientType').setValue(true);
-    }
-
-    if (this.technician.profiles.includes('TECHNICIAN')) {
-      this.form.get('technicianType').setValue(true);
-    }
   }
 
   toastrConfig() {
