@@ -9,6 +9,8 @@ import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Ticket } from '../../../models/ticket';
 import { TicketService } from '../../../services/ticket/ticket.service';
+import { getPriorityString } from '../../../models/enums/ticketPriority.enum';
+import { getStatusString  } from '../../../models/enums/ticketStatus.enum';
 
 @Component({
   selector: 'app-ticket-list',
@@ -19,7 +21,7 @@ import { TicketService } from '../../../services/ticket/ticket.service';
   providers: [ToastrService]
 })
 export class TicketListComponent {
-  displayedColumns: string[] = ['id', 'title', 'client', 'technician', 'acoes'];
+  displayedColumns: string[] = ['id', 'title', 'client', 'technician', 'openedDate', 'priority', 'status', 'acoes'];
   dataSource: MatTableDataSource<Ticket> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -56,6 +58,7 @@ export class TicketListComponent {
         this.dataSource = new MatTableDataSource(response);
         this.paginator.pageSize=10;
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error: (error) => {
         this.toastr.error("Erro ao buscar");
@@ -63,6 +66,14 @@ export class TicketListComponent {
     })
   }
 
+  displayPriorityString(value: number): string{
+    return getPriorityString(value);
+  }
+
+  displayStatusString(value: number): string{
+    return getStatusString(value);
+  }
+  
   toastrConfig() {
     this.toastr.toastrConfig.timeOut = 4000;
     this.toastr.toastrConfig.closeButton = true;
