@@ -58,6 +58,7 @@ export class ClientListComponent implements AfterViewInit {
         this.dataSource = new MatTableDataSource(response);
         this.paginator.pageSize=10;
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error: (error) => {
         this.toastr.error("Erro ao buscar");

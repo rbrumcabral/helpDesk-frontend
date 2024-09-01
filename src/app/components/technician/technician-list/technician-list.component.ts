@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -56,8 +55,9 @@ export class TechnicianListComponent implements AfterViewInit {
     this.service.findAll().subscribe({
       next: (response) => {
         this.dataSource = new MatTableDataSource(response);
-        this.paginator.pageSize=10;
+        this.paginator.pageSize = 10;
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error: (error) => {
         this.toastr.error("Erro ao buscar");
@@ -68,8 +68,8 @@ export class TechnicianListComponent implements AfterViewInit {
   formatCPF(cpf: string): string {
     if (!cpf) return '';
     return cpf.replace(/(\d{3})(\d)/, '$1.$2')
-              .replace(/(\d{3})(\d)/, '$1.$2')
-              .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
   }
 
   toastrConfig() {
