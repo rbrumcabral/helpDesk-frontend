@@ -4,6 +4,6 @@ export interface Client {
     cpf: string;
     email: string;
     password: string;
-    profiles: string[];
+    profile: string;
     creationDate: any;
 }
