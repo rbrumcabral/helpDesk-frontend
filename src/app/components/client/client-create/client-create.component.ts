@@ -58,6 +58,7 @@ export class ClientCreateComponent {
 
   create(): void {
     this.fillClient();
+    this.form.get('profile').setValue(this.client.profile);
     this.service.create(this.client).subscribe({
       next: (response) => {
         this.toastr.success("Usuário criado com sucesso!", "Sucesso");

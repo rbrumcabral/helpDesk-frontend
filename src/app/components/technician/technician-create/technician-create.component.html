@@ -6,7 +6,7 @@
         <section>
             <mat-radio-group class="type-user" formControlName="profile" aria-label="Perfil">
                 <mat-radio-button value="ADMIN" color="primary"> Admin </mat-radio-button>
-                <mat-radio-button value="DEFAULT" color="primary"> Padrão </mat-radio-button>
+                <mat-radio-button value="DEFAULT" [checked]="true" color="primary"> Padrão </mat-radio-button>
                 <mat-radio-button value="READONLY" color="primary"> Apenas leitura </mat-radio-button>
             </mat-radio-group>
         </section>
