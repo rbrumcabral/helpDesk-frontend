@@ -6,8 +6,15 @@
 
     <mat-form-field>
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Rafael" #input>
+        <input matInput (keyup)="applyTextFilter($event)" placeholder="Ex. Rafael" #input>
     </mat-form-field>
+
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" (selectedTabChange)="onTabChanged($event)">
+        <mat-tab label="Todos"></mat-tab>
+        <mat-tab label="Aberto"></mat-tab>
+        <mat-tab label="Em andamento"></mat-tab>
+        <mat-tab label="Fechado"></mat-tab>
+    </mat-tab-group>
 
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
