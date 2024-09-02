@@ -20,7 +20,7 @@ import { TechnicianService } from '../../../services/technician/technician.servi
 
 export class TechnicianListComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
+  displayedColumns: string[] = ['id', 'name', 'cpf', 'email', 'acoes'];
   dataSource: MatTableDataSource<Technician> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -77,4 +77,5 @@ export class TechnicianListComponent implements AfterViewInit {
     this.toastr.toastrConfig.closeButton = true;
     this.toastr.toastrConfig.progressBar = true;
   }
+
 }
