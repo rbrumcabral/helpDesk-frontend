@@ -6,7 +6,7 @@ enum TicketStatus {
 
 const TicketStatusStrings: { [key: number]: string } = {
     [TicketStatus.OPEN]: "Aberto",
-    [TicketStatus.IN_PROGRESS]: "Em progresso",
+    [TicketStatus.IN_PROGRESS]: "Em andamento",
     [TicketStatus.CLOSED]: "Fechado"
 };
 
