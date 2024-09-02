@@ -3,26 +3,31 @@
     <img src="assets/img/side-image.svg" alt="Imagem de navegação">
     <mat-nav-list class="nav-list">
       <a mat-list-item routerLink="home">
-        <i class="material-icons">home</i>Home
+        <mat-icon>home</mat-icon>
+        Home
       </a>
       <a mat-list-item routerLink="technician">
-        <i class="material-icons">account_circle</i>
+        <mat-icon>account_circle</mat-icon>
         Técnicos
       </a>
       <a mat-list-item routerLink="client">
-        <i class="material-icons">person</i>
+        <mat-icon>person</mat-icon>
         Clientes
       </a>
       <a mat-list-item routerLink="ticket">
-        <i class="material-icons">support</i>
+        <mat-icon>support</mat-icon>
         Chamados
       </a>
-      <a mat-list-item href="https://github.com/ValdirCezar/helpdesk-front" target="_blank">
-        <i class="material-icons">code</i>
-        Github
+      <a mat-list-item href="https://github.com/rbrumcabral/helpDesk-backend" target="_blank">
+        <mat-icon>code</mat-icon>
+        Github Backend
+      </a>
+      <a mat-list-item href="git " target="_blank">
+        <mat-icon>code</mat-icon>
+        Github Frontend
       </a>
       <a mat-list-item (click)="logout()">
-        <i class="material-icons">logout</i>
+        <mat-icon>logout</mat-icon>
         Logout
       </a>
     </mat-nav-list>
@@ -33,7 +38,6 @@
     <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
-    <router-outlet> </router-outlet>
+    <router-outlet></router-outlet>
   </div>
-
 </mat-drawer-container>
