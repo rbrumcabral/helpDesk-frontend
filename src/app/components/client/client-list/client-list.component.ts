@@ -21,7 +21,7 @@ import { ClientService } from '../../../services/client/client.service';
 
 export class ClientListComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'acoes'];
+  displayedColumns: string[] = ['id', 'name', 'cpf', 'email', 'acoes'];
   dataSource: MatTableDataSource<Client> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
