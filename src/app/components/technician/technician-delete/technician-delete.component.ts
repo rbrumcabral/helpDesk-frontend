@@ -42,7 +42,7 @@ export class TechnicianDeleteComponent {
   ) {
     this.toastrConfig();
     this.form = this.fb.group({
-      profile: ['',],
+      profile: [{value:'', disabled:'true'}],
       name: ['', [Validators.minLength(6), Validators.required]],
       cpf: ['', [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
       email: ['', [Validators.email, Validators.required]],

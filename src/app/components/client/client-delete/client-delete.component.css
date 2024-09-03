@@ -1,4 +1,4 @@
-.container{
+.container {
     width: 40rem;
     margin: auto auto;
     padding: 1rem 1rem 3rem 1rem;
@@ -11,16 +11,16 @@ h1.header-create {
     margin: 1rem 1rem;
 }
 
-.fullWidth{
+.fullWidth {
     width: 100%
 }
 
-img{
+img {
     height: 8rem;
     margin: auto;
 }
 
-.type-user{
+.type-user {
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;

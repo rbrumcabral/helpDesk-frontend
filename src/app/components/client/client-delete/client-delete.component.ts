@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
@@ -18,10 +18,9 @@ import { ClientService } from '../../../services/client/client.service';
   imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
   providers: [provideNgxMask(), ToastrService],
   templateUrl: './client-delete.component.html',
-  styleUrl: './client-delete.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './client-delete.component.css'
 })
-export class ClientDeleteComponent {
+export class ClientDeleteComponent implements OnInit {
   form: FormGroup;
 
   client: Client = {
@@ -40,19 +39,18 @@ export class ClientDeleteComponent {
     private fb: FormBuilder,
     private activeRoute: ActivatedRoute,
     private router: Router,
-  ) {
-    this.toastrConfig();
-    this.form = this.fb.group({
-      profile: ['', ],
-      name: ['', [Validators.minLength(6), Validators.required]],
-      cpf: ['', [Validators.minLength(11), Validators.maxLength(11), Validators.required]],
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.minLength(8), Validators.required]],
-      confirmPassword: ['', [Validators.minLength(8), Validators.required]]
-    });
-  }
+  ) { }
 
   ngOnInit() {
+    this.toastrConfig();
+    this.form = this.fb.group({
+      profile: [{value: '', disabled: 'true'}],
+      name: ['',],
+      cpf: ['',],
+      email: ['',],
+      password: ['',],
+      confirmPassword: ['',]
+    });
     this.client.id = this.activeRoute.snapshot.paramMap.get('id');
     this.findById();
   }
@@ -60,7 +58,6 @@ export class ClientDeleteComponent {
   findById(): void {
     this.service.findById(this.client.id).subscribe({
       next: (response) => {
-        console.log(response);
         this.client = response;
         this.fillForm();
       },

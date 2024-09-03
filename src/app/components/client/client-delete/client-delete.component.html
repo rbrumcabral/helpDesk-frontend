@@ -4,7 +4,7 @@
         <img src="assets/img/tecnico-create.svg" class="fullWidth" alt="imagem de fundo">
 
         <section>
-            <mat-radio-group class="type-user" formControlName="profile" aria-label="Perfil">
+            <mat-radio-group class="type-user readonlyGroup" formControlName="profile" aria-label="Perfil">
                 <mat-radio-button value="ADMIN" color="primary"> Admin </mat-radio-button>
                 <mat-radio-button value="DEFAULT" color="primary"> Padrão </mat-radio-button>
                 <mat-radio-button value="READONLY" color="primary"> Apenas leitura </mat-radio-button>
@@ -12,18 +12,18 @@
         </section>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">
-            <mat-label >Nome</mat-label>
-            <input matInput [disabled]="true" formControlName="name" readonly maxlength="50">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name" readonly maxlength="50">
         </mat-form-field>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">
             <mat-label>CPF</mat-label>
-            <input matInput [disabled]="true" formControlName="cpf" readonly mask="000.000.000-00">
+            <input matInput formControlName="cpf" readonly mask="000.000.000-00">
         </mat-form-field>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput [disabled]="true" formControlName="email" readonly type="email">
+            <input matInput formControlName="email" readonly type="email">
         </mat-form-field>
 
         <button (click)="delete()" class="fullWidth" mat-flat-button color="primary"> Deletar </button>
