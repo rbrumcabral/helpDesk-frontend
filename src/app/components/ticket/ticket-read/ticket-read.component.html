@@ -1,0 +1,53 @@
+<div class="container mat-elevation-z8">
+    <form class="form" [formGroup]="form">
+        <h1 class="header-create fullWidth"> Atualização de chamado </h1>
+        <img src="assets/img/chamado-create.svg" class="fullWidth" alt="imagem de fundo">
+
+        <mat-form-field class="user-input fullWidth" appearance="fill">
+            <mat-label>Título</mat-label>
+            <input matInput readonly formControlName="title" maxlength="75" placeholder="Título">
+        </mat-form-field>
+
+        <mat-form-field class="user-input fullWidth description" appearance="fill">
+            <mat-label>Descrição</mat-label>
+            <textarea matInput readonly class="description" formControlName="description" placeholder="Descrição" maxlength="3000"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="user-input fullWidth">
+            <mat-label>Selecione o técnico</mat-label>
+            <mat-select class="readonly" [disabled]="true" formControlName="technician">
+                <mat-option *ngFor="let tech of technicians" [value]="tech.id">{{tech.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="user-input fullWidth">
+            <mat-label>Selecione o cliente</mat-label>
+            <mat-select class="readonly" [disabled]="true" formControlName="client">
+                <mat-option *ngFor="let cli of clients" [value]="cli.id">{{cli.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="subContainer">
+            <mat-form-field class="user-input halfWidth">
+                <mat-label>Status</mat-label>
+                <mat-select class="readonly" [disabled]="true" formControlName="status">
+                    <mat-option [value]="0"> Aberto </mat-option>
+                    <mat-option [value]="1"> Em andamento </mat-option>
+                    <mat-option [value]="2"> Fechado </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="user-input halfWidth">
+                <mat-label>Prioridade</mat-label>
+                <mat-select class="readonly" [disabled]="true" formControlName="priority">
+                    <mat-option [value]="0"> Baixa </mat-option>
+                    <mat-option [value]="1"> Média </mat-option>
+                    <mat-option [value]="2"> Alta </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button routerLink="../../" class="fullWidth" mat-stroked-button color="warn"> Voltar </button>
+
+    </form>
+</div>
