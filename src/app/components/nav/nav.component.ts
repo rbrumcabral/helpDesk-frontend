@@ -25,7 +25,7 @@ export class NavComponent {
   constructor(private router: Router, private authService: AuthService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
+    this.router.navigate['home'];  
   }
 
   logout(): void {
