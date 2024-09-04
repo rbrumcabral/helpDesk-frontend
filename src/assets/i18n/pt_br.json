@@ -54,5 +54,11 @@
     },
     "header": {
         "title": "Projeto CRUD Spring-Angular"
+    },
+    "login":{
+        "title": "Projeto CRUD Spring-Angular",
+        "email": "E-mail",
+        "password": "Senha",
+        "loginError": "Usuário e/ou senha incorretos!"
     }
 }

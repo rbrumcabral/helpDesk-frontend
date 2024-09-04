@@ -7,11 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth/auth.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateTools } from '../../services/translate/translate.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatIcon, MatButton, ReactiveFormsModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatIcon, MatButton, ReactiveFormsModule, TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   providers: [ToastrService]
@@ -22,7 +24,8 @@ export class LoginComponent {
   constructor(
     private toastr: ToastrService,
     private service: AuthService,
-    private router: Router) {
+    private router: Router,
+    private translate: TranslateTools) {
     this.toastrConfig();
   }
 
@@ -60,7 +63,7 @@ export class LoginComponent {
       this.router.navigate(['home']);
     },
       () => {
-        this.toastr.error("Usuário e/ou senha incorretos!");
+        this.toastr.error(this.translate.translate("login.error"));
       });
   }
 }

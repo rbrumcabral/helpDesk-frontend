@@ -1,16 +1,16 @@
 <div class="container">
     <form class="login-form  mat-elevation-z8">
-        <h1> Help Desk - Dicas de um dev</h1>
+        <h1>{{'login.title'| translate}}</h1>
 
         <img src="assets/img/login-image.svg" alt="Imagem de tela de login">
         <mat-form-field class="email-input full-width">
-            <mat-label>E-mail</mat-label>
+            <mat-label>{{'login.email'| translate}}</mat-label>
             <input [formControl]="username" [(ngModel)]="credenciais.username" name="email" matInput
                 placeholder="seunome@mail.com">
         </mat-form-field>
 
         <mat-form-field class="password-input full-width">
-            <mat-label>Senha</mat-label>
+            <mat-label>{{'login.password'| translate}}</mat-label>
             <input [formControl]="password" [(ngModel)]="credenciais.password" name="senha" type="password" matInput
                 placeholder="Digite sua senha" matInput [type]="passwordVisible ? 'text' : 'password'">
 
