@@ -37,7 +37,7 @@ export class NavComponent {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['login']);
-    this.toastr.info(this.translate.translate("sucess.logout"), "Logout", { timeOut: 4000 });
+    this.toastr.info(this.translate.translate("success.logout"), "Logout", { timeOut: 4000 });
   }
 
 }

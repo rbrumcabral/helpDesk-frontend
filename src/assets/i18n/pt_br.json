@@ -29,7 +29,7 @@
         "createTitle": "Cadastrar técnico",
         "updateTitle": "Atualizar técnico",
         "deleteTitle": "Excluir técnico",
-        "addClient": "Adicionar técnico",
+        "addTechnician": "Adicionar técnico",
         "id": "Id",
         "name": "Nome",
         "cpf": "CPF",
@@ -39,28 +39,35 @@
         "confirmPassword": "Confirme sua senha"
     }, 
     "success":{
-        "success": "Sucesso",
-        "createUser": "Usuário criado com sucesso!",
-        "deleteUser": "Usuário deletado com sucesso!",
-        "updateUser": "Usuário atualizado com sucesso!",
-        "logout": "Logout realizado com sucesso!"
+        "success": "Sucesso!",
+        "createUser": "Usuário criado com sucesso",
+        "deleteUser": "Usuário deletado com sucesso",
+        "updateUser": "Usuário atualizado com sucesso",
+        "createTechnician": "Técnico criado com sucesso",
+        "deleteTechnician": "Técnico deletado com sucesso",
+        "updateTechnician": "Técnico atualizado com sucesso",
+        "logout": "Logout realizado com sucesso"
     },
     "error": {
-        "error": "Erro",
-        "findAllClient": "Falha ao buscar clientes",
-        "createUser": "Falha ao criar o usuário!",
+        "error": "Erro!",
+        "findAllClient": "Falha ao recuperar clientes",
+        "createUser": "Falha ao criar o usuário",
         "findByIdClient": "Falha ao recuperar cliente", 
         "deleteClient": "Falha ao deletar o cliente",
-        "updateClient": "Falha ao atualizar o cliente"
+        "updateClient": "Falha ao atualizar o cliente",
+        "findAllTechnician": "Falha ao recuperar técnicos",
+        "findByIdTechnician": "Falha ao recuperar o técnico", 
+        "deleteTechnician": "Falha ao deletar o técnico",
+        "updateTechnician": "Falha ao atualizar o técnico"
     },
     "header": {
-        "title": "Projeto CRUD Spring-Angular"
+        "title": "Projeto CRUD Spring 3 - Angular 18"
     },
     "login":{
-        "title": "Projeto CRUD Spring-Angular",
+        "title": "Projeto CRUD Spring 3 - Angular 18",
         "email": "E-mail",
         "password": "Senha",
-        "loginError": "Usuário e/ou senha incorretos!"
+        "loginError": "Usuário e/ou senha incorretos"
     },
     "nav": {
         "home": "Início",
