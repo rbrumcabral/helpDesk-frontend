@@ -6,16 +6,18 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from '../../../models/client';
 import { ClientService } from '../../../services/client/client.service';
+import { TranslateTools } from '../../../services/translate/translate.service';
 
 @Component({
   selector: 'client-list',
   templateUrl: './client-list.component.html',
   styleUrl: './client-list.component.css',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule, RouterLink],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule, RouterLink, TranslateModule],
   providers: [ToastrService]
 })
 
@@ -29,7 +31,8 @@ export class ClientListComponent implements AfterViewInit {
 
   constructor(
     private service: ClientService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translate: TranslateTools,
   ) {
     this.toastrConfig();
   }
@@ -56,12 +59,12 @@ export class ClientListComponent implements AfterViewInit {
     this.service.findAll().subscribe({
       next: (response) => {
         this.dataSource = new MatTableDataSource(response);
-        this.paginator.pageSize=10;
+        this.paginator.pageSize = 10;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
       error: (error) => {
-        this.toastr.error("Erro ao buscar");
+        this.toastr.error(this.translate.translate("error.findAllClient"));
       }
     })
   }
@@ -69,8 +72,8 @@ export class ClientListComponent implements AfterViewInit {
   formatCPF(cpf: string): string {
     if (!cpf) return '';
     return cpf.replace(/(\d{3})(\d)/, '$1.$2')
-              .replace(/(\d{3})(\d)/, '$1.$2')
-              .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
   }
 
   toastrConfig() {

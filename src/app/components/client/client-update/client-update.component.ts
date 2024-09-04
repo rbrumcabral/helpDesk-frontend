@@ -6,17 +6,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from '../../../models/client';
 import { ClientService } from '../../../services/client/client.service';
+import { TranslateTools } from '../../../services/translate/translate.service';
 
 @Component({
   selector: 'app-client-update',
   standalone: true,
   templateUrl: './client-update.component.html',
   styleUrl: './client-update.component.css',
-  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule, TranslateModule],
   providers: [provideNgxMask(), ToastrService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -39,8 +41,16 @@ export class ClientUpdateComponent {
     private toastr: ToastrService,
     private fb: FormBuilder,
     private router: Router,
-    private activeRoute: ActivatedRoute
-  ) {
+    private activeRoute: ActivatedRoute,
+    private translate: TranslateTools
+  ) { }
+
+  validaCampos(): boolean {
+    return this.form.get('name').valid && this.form.get('cpf').valid && this.form.get('email').valid && this.form.get('password').valid
+      && this.form.get('password').value === this.form.get('confirmPassword').value;
+  }
+
+  ngOnInit() {
     this.toastrConfig();
     this.form = this.fb.group({
       profile: ['',],
@@ -50,14 +60,6 @@ export class ClientUpdateComponent {
       password: ['', [Validators.minLength(8)]],
       confirmPassword: ['', [Validators.minLength(8)]]
     });
-  }
-
-  validaCampos(): boolean {
-    return this.form.get('name').valid && this.form.get('cpf').valid && this.form.get('email').valid && this.form.get('password').valid
-      && this.form.get('password').value === this.form.get('confirmPassword').value;
-  }
-
-  ngOnInit() {
     this.client.id = this.activeRoute.snapshot.paramMap.get('id');
     this.findById();
   }
@@ -70,7 +72,7 @@ export class ClientUpdateComponent {
         this.fillForm();
       },
       error: (error) => {
-        this.toastr.error("Falha ao recuperar técnico", "Erro");
+        this.toastr.error(this.translate.translate('error.findByIdClient'), this.translate.translate('error.error'));
       }
     })
   }
@@ -79,11 +81,11 @@ export class ClientUpdateComponent {
     this.fillClient();
     this.service.update(this.client).subscribe({
       next: (response) => {
-        this.toastr.success("Usuário atualizado com sucesso!", "Sucesso");
+        this.toastr.success(this.translate.translate('success.updateUser'), this.translate.translate('success.success'));
         this.router.navigate(['client']);
       },
       error: (error) => {
-        this.toastr.error("Falha ao atualizar o usuário", "Erro");
+        this.toastr.error(this.translate.translate('error.updateClient'), this.translate.translate('error.error'));
         if (error.error.errors) {
           error.error.errors.forEach(element => {
             this.toastr.error(element.message);
@@ -102,7 +104,7 @@ export class ClientUpdateComponent {
     this.client.cpf = this.form.get('cpf').value;
     this.client.email = this.form.get('email').value;
     this.client.password = this.form.get('password').value;
-    this.client.profile = this.form.get('profile').value; 
+    this.client.profile = this.form.get('profile').value;
   }
 
   fillForm() {

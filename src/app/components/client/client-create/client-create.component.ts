@@ -6,15 +6,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { Router, RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from '../../../models/client';
 import { ClientService } from '../../../services/client/client.service';
+import { TranslateTools } from '../../../services/translate/translate.service';
 
 @Component({
   selector: 'app-client-create',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule, TranslateModule],
   providers: [provideNgxMask(), ToastrService],
   templateUrl: './client-create.component.html',
   styleUrl: './client-create.component.css',
@@ -38,8 +40,11 @@ export class ClientCreateComponent {
     private service: ClientService,
     private toastr: ToastrService,
     private fb: FormBuilder,
-    private router: Router
-  ) {
+    private router: Router,
+    private translate: TranslateTools
+  ) { }
+
+  ngOnInit() {
     this.toastrConfig();
     this.form = this.fb.group({
       profile: ['DEFAULT',],
@@ -61,11 +66,11 @@ export class ClientCreateComponent {
     this.form.get('profile').setValue(this.client.profile);
     this.service.create(this.client).subscribe({
       next: (response) => {
-        this.toastr.success("Usuário criado com sucesso!", "Sucesso");
+        this.toastr.success(this.translate.translate('success.createUser'), this.translate.translate('success.success'));
         this.router.navigate(['client']);
       },
       error: (error) => {
-        this.toastr.error("Falha ao criar o usuário", "Erro");
+        this.toastr.error(this.translate.translate('error.createUser'), this.translate.translate('error.error'));
         if (error.error.errors) {
           error.error.errors.forEach(element => {
             this.toastr.error(element.message);
@@ -83,7 +88,7 @@ export class ClientCreateComponent {
     this.client.cpf = this.form.get('cpf').value;
     this.client.email = this.form.get('email').value;
     this.client.password = this.form.get('password').value;
-    this.client.profile = this.form.get('profile').value; 
+    this.client.profile = this.form.get('profile').value;
   }
 
   toastrConfig() {

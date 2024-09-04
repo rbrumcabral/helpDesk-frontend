@@ -7,15 +7,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from '../../../models/client';
 import { ClientService } from '../../../services/client/client.service';
+import { TranslateTools } from '../../../services/translate/translate.service';
 
 @Component({
   selector: 'app-client-delete',
   standalone: true,
-  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
+  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule, TranslateModule],
   providers: [provideNgxMask(), ToastrService],
   templateUrl: './client-delete.component.html',
   styleUrl: './client-delete.component.css'
@@ -39,12 +41,13 @@ export class ClientDeleteComponent implements OnInit {
     private fb: FormBuilder,
     private activeRoute: ActivatedRoute,
     private router: Router,
+    private translate: TranslateTools
   ) { }
 
   ngOnInit() {
     this.toastrConfig();
     this.form = this.fb.group({
-      profile: [{value: '', disabled: 'true'}],
+      profile: [{ value: '', disabled: 'true' }],
       name: ['',],
       cpf: ['',],
       email: ['',],
@@ -62,7 +65,7 @@ export class ClientDeleteComponent implements OnInit {
         this.fillForm();
       },
       error: (error) => {
-        this.toastr.error("Falha ao recuperar técnico", "Erro");
+        this.toastr.error(this.translate.translate('error.findByIdClient'), this.translate.translate('error.error'));
       }
     })
   }
@@ -70,11 +73,11 @@ export class ClientDeleteComponent implements OnInit {
   delete(): void {
     this.service.delete(this.client).subscribe({
       next: (response) => {
-        this.toastr.success("Usuário deletado com sucesso!", "Sucesso");
+        this.toastr.success(this.translate.translate('success.deleteUser'), this.translate.translate('success.success'));
         this.router.navigate(['client']);
       },
       error: (error) => {
-        this.toastr.error("Falha ao deletar o usuário", "Erro");
+        this.toastr.error(this.translate.translate('error.deleteClient'), this.translate.translate('error.error'));
         if (error.error.errors) {
           error.error.errors.forEach(element => {
             this.toastr.error(element.message);

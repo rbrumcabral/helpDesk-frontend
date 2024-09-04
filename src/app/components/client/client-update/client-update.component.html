@@ -1,44 +1,43 @@
 <div class="container mat-elevation-z8">
     <form class="form" [formGroup]="form">
-        <h1 class="header-create fullWidth"> Atualizar cliente </h1>
+        <h1 class="header-create fullWidth"> {{ 'client.updateTitle' | translate }} </h1>
         <img src="assets/img/tecnico-create.svg" class="fullWidth" alt="imagem de fundo">
 
         <section>
             <mat-radio-group class="type-user" formControlName="profile" aria-label="Perfil">
-                <mat-radio-button value="ADMIN" color="primary"> Admin </mat-radio-button>
-                <mat-radio-button value="DEFAULT" color="primary"> Padrão </mat-radio-button>
-                <mat-radio-button value="READONLY" color="primary"> Apenas leitura </mat-radio-button>
+                <mat-radio-button value="ADMIN" color="primary"> {{ 'userType.admin' | translate }} </mat-radio-button>
+                <mat-radio-button value="DEFAULT" [checked]="true" color="primary"> {{ 'userType.default' | translate }}</mat-radio-button>
+                <mat-radio-button value="READONLY" color="primary"> {{ 'userType.readonly' | translate }} </mat-radio-button>
             </mat-radio-group>
         </section>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">
-            <mat-label>Nome</mat-label>
+            <mat-label>{{ 'client.name' | translate }}</mat-label>
             <input matInput formControlName="name" maxlength="50" placeholder="Nome completo">
         </mat-form-field>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">
-            <mat-label>CPF</mat-label>
+            <mat-label>{{ 'client.cpf' | translate }}</mat-label>
             <input matInput formControlName="cpf" mask="000.000.000-00" placeholder="CPF (Somente números)">
         </mat-form-field>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">
-            <mat-label>Email</mat-label>
+            <mat-label>{{ 'client.email' | translate }}</mat-label>
             <input matInput formControlName="email" type="email" placeholder="Ex.: fulano@ciclano.com">
         </mat-form-field>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">
-            <mat-label>Nova senha</mat-label>
+            <mat-label>{{ 'client.password' | translate }}</mat-label>
             <input matInput formControlName="password" type="password" placeholder="Mínimo: 8 caracteres">
-            <mat-hint> Deixe em branco para não alterar </mat-hint>
         </mat-form-field>
 
         <mat-form-field class="user-input fullWidth" appearance="fill">
-            <mat-label>Confirme sua senha</mat-label>
+            <mat-label>{{ 'client.confirmPassword' | translate }}</mat-label>
             <input matInput formControlName="confirmPassword" type="password" placeholder="Repita sua senha">
         </mat-form-field>
 
-        <button [disabled]="!validaCampos()" (click)="update()" class="fullWidth" mat-flat-button color="primary"> Atualizar </button>
-        <button routerLink="../../" class="fullWidth" mat-stroked-button color="warn"> Cancelar </button>
+        <button [disabled]="!validaCampos()" (click)="update()" class="fullWidth" mat-flat-button color="primary"> {{ 'update' | translate }} </button>
+        <button routerLink="../../" class="fullWidth" mat-stroked-button color="warn"> {{ 'cancel' | translate }} </button>
 
     </form>
 </div>

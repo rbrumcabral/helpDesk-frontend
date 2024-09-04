@@ -24,6 +24,20 @@
         "password": "Senha",
         "confirmPassword": "Confirme sua senha"
     }, 
+    "technician": {
+        "listTitle": "Lista de técnicos",
+        "createTitle": "Cadastrar técnico",
+        "updateTitle": "Atualizar técnico",
+        "deleteTitle": "Excluir técnico",
+        "addClient": "Adicionar técnico",
+        "id": "Id",
+        "name": "Nome",
+        "cpf": "CPF",
+        "email": "E-mail",
+        "actions": "Ações",
+        "password": "Senha",
+        "confirmPassword": "Confirme sua senha"
+    }, 
     "success":{
         "success": "Sucesso",
         "createUser": "Usuário criado com sucesso!",
