@@ -1,0 +1,41 @@
+{
+    "filterNotFound": "Não foram encontrados dados para a pesquisa",
+    "search": "Pesquisar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "addRegister": "Cadastrar",    
+    "update": "Atualizar",
+    "userType":{
+        "admin": "Admin",
+        "default": "Padrão",
+        "readonly": "Somente leitura"
+    },
+    "client": {
+        "listTitle": "Lista de clientes",
+        "createTitle": "Cadastrar cliente",
+        "updateTitle": "Atualizar cliente",
+        "deleteTitle": "Excluir cliente",
+        "addClient": "Adicionar cliente",
+        "id": "Id",
+        "name": "Nome",
+        "cpf": "CPF",
+        "email": "E-mail",
+        "actions": "Ações",
+        "password": "Senha",
+        "confirmPassword": "Confirme sua senha"
+    }, 
+    "success":{
+        "success": "Sucesso",
+        "createUser": "Usuário criado com sucesso!",
+        "deleteUser": "Usuário deletado com sucesso!",
+        "updateUser": "Usuário atualizado com sucesso!"
+    },
+    "error": {
+        "error": "Erro",
+        "findAllClient": "Falha ao buscar clientes",
+        "createUser": "Falha ao criar o usuário!",
+        "findByIdClient": "Falha ao recuperar cliente", 
+        "deleteClient": "Falha ao deletar o cliente",
+        "updateClient": "Falha ao atualizar o cliente"
+    }
+}
