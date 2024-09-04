@@ -4,31 +4,31 @@
     <mat-nav-list class="nav-list">
       <a mat-list-item routerLink="home">
         <mat-icon>home</mat-icon>
-        Home
+        {{'nav.home' |translate}}
       </a>
       <a mat-list-item routerLink="technician">
         <mat-icon>account_circle</mat-icon>
-        Técnicos
+        {{'nav.technicians' |translate}}
       </a>
       <a mat-list-item routerLink="client">
         <mat-icon>person</mat-icon>
-        Clientes
+       {{'nav.clients' |translate}}
       </a>
       <a mat-list-item routerLink="ticket">
         <mat-icon>support</mat-icon>
-        Chamados
+        {{'nav.tickets' |translate}}
       </a>
       <a mat-list-item href="https://github.com/rbrumcabral/helpDesk-backend" target="_blank">
         <mat-icon>code</mat-icon>
-        Github Backend
+        {{'nav.githubBackend' |translate}} 
       </a>
       <a mat-list-item href="https://github.com/rbrumcabral/helpDesk-frontend" target="_blank">
         <mat-icon>code</mat-icon>
-        Github Frontend
+        {{'nav.githubFrontend' |translate}}
       </a>
       <a mat-list-item (click)="logout()">
         <mat-icon>logout</mat-icon>
-        Logout
+        {{'nav.logout' |translate}}
       </a>
     </mat-nav-list>
   </mat-drawer>

@@ -42,7 +42,8 @@
         "success": "Sucesso",
         "createUser": "Usuário criado com sucesso!",
         "deleteUser": "Usuário deletado com sucesso!",
-        "updateUser": "Usuário atualizado com sucesso!"
+        "updateUser": "Usuário atualizado com sucesso!",
+        "logout": "Logout realizado com sucesso!"
     },
     "error": {
         "error": "Erro",
@@ -60,5 +61,14 @@
         "email": "E-mail",
         "password": "Senha",
         "loginError": "Usuário e/ou senha incorretos!"
+    },
+    "nav": {
+        "home": "Início",
+        "clients": "Clientes",
+        "technicians": "Técnicos",
+        "tickets": "Chamados",
+        "logout": "Sair",
+        "githubFrontend": "Github Frontend",
+        "githubBackend": "Github Backend"
     }
 }
