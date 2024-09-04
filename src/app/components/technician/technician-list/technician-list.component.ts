@@ -5,16 +5,18 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Technician } from '../../../models/technician';
 import { TechnicianService } from '../../../services/technician/technician.service';
+import { TranslateTools } from '../../../services/translate/translate.service';
 
 @Component({
   selector: 'technician-list',
   templateUrl: './technician-list.component.html',
   styleUrl: './technician-list.component.css',
   standalone: true,
-  imports: [MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule, RouterLink],
+  imports: [MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButtonModule, RouterLink, TranslateModule],
   providers: [ToastrService]
 })
 
@@ -28,7 +30,8 @@ export class TechnicianListComponent implements AfterViewInit {
 
   constructor(
     private service: TechnicianService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private translate: TranslateTools
   ) {
     this.toastrConfig();
   }
@@ -60,7 +63,7 @@ export class TechnicianListComponent implements AfterViewInit {
         this.dataSource.sort = this.sort;
       },
       error: (error) => {
-        this.toastr.error("Erro ao buscar");
+        this.toastr.error(this.translate.translate("technician.findAllTechnician"));
       }
     })
   }

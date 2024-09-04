@@ -11,13 +11,15 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { Technician } from '../../../models/technician';
 import { TechnicianService } from '../../../services/technician/technician.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateTools } from '../../../services/translate/translate.service';
 
 @Component({
   selector: 'app-technician-update',
   standalone: true,
   templateUrl: './technician-update.component.html',
   styleUrl: './technician-update.component.css',
-  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule],
+  imports: [MatCheckboxModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, RouterLink, MatFormField, ReactiveFormsModule, NgxMaskDirective, MatRadioModule, TranslateModule],
   providers: [provideNgxMask(), ToastrService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -40,7 +42,8 @@ export class TechnicianUpdateComponent {
     private toastr: ToastrService,
     private fb: FormBuilder,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private translate: TranslateTools
   ) {
     this.toastrConfig();
     this.form = this.fb.group({
@@ -71,20 +74,20 @@ export class TechnicianUpdateComponent {
         this.fillForm();
       },
       error: (error) => {
-        this.toastr.error("Falha ao recuperar técnico", "Erro");
+        this.toastr.error(this.translate.translate('success.findByIdTechnician'), this.translate.translate('error.error'));
       }
     })
   }
 
   update(): void {
     this.fillTechnician();
-    this.service.update(this.technician).subscribe({
+    this.service.update(this.technician.id).subscribe({
       next: (response) => {
-        this.toastr.success("Usuário atualizado com sucesso!", "Sucesso");
+        this.toastr.success(this.translate.translate('success.updateTechnician'), this.translate.translate('success.success'));
         this.router.navigate(['technician']);
       },
       error: (error) => {
-        this.toastr.error("Falha ao atualizar o usuário", "Erro");
+        this.toastr.error(this.translate.translate('error.updateTechnician'), this.translate.translate('error.error'));
         if (error.error.errors) {
           error.error.errors.forEach(element => {
             this.toastr.error(element.message);
