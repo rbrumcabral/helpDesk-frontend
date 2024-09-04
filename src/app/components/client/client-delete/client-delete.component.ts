@@ -71,7 +71,7 @@ export class ClientDeleteComponent implements OnInit {
   }
 
   delete(): void {
-    this.service.delete(this.client).subscribe({
+    this.service.delete(this.client.id).subscribe({
       next: (response) => {
         this.toastr.success(this.translate.translate('success.deleteUser'), this.translate.translate('success.success'));
         this.router.navigate(['client']);
