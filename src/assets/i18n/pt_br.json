@@ -51,5 +51,8 @@
         "findByIdClient": "Falha ao recuperar cliente", 
         "deleteClient": "Falha ao deletar o cliente",
         "updateClient": "Falha ao atualizar o cliente"
+    },
+    "header": {
+        "title": "Projeto CRUD Spring-Angular"
     }
 }
