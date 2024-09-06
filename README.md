@@ -1,27 +1,28 @@
-# Helpdesk
+# Esse projeto foi desenvolvido durante e tem seu código inspirado no curso "Formação Angular + Spring Boot", de Valdir Cezar, disponível em LINK
+# Ele apresenta um CRUD como base de aprendizado para as seguintes técnologias:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+# Comum
 
-## Development server
+Git <br/>
+GitHub <br/>
+Backend Deploy: Heroku <br/>
+Frontend Deploy: Vercel <br/>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Backend
 
-## Code scaffolding
+Java 21 <br/>
+Spring Boot 3.3.2 <br/>
+Spring Data JPA <br/>
+Hibernate <br/>
+Spring Boot Security <br/>
+Auth 2.0 <br/>
+JWT - JSON Web Tokens <br/>
+Maven <br/>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Frontend
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Angular 18 <br/>
+Angular Material 18 <br/>
+Node JS TypeScript <br/>
+Ngx-Translate <br/>
+Ngx-Toastr <br/>
