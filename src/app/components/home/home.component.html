@@ -1,20 +1,49 @@
 <mat-card class="card mat-elevation-z8" appearance="outlined">
     <mat-card-header>
-        <mat-card-title>Help Desk</mat-card-title>
-        <mat-card-subtitle>Dicas de um DEV</mat-card-subtitle>
+        <mat-card-title>{{'home.title' | translate}} </mat-card-title>
+        <mat-card-subtitle> {{'author' | translate}} </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="assets/img/home-image.svg" alt="help Desk home image">
     <mat-card-content>
-        <p>
-            Olá! Seja bem vindo ao sistema Help Desk desenvolvido por mim no curso Desenvolvedor Full Stack.<br />
-            Esse é um sistema para gerenciamento de chamados simulando um simples Help Desk desenvolvido em Angular 12 e
-            Spring Boot 2. <br />O sistema está rodando na nuvem sendo o front na Vercel e o back na Heroku.<br />
-            O projeto tem como objetivo principal abordar os conceitos de aplicações SPAs, Autenticação e Autorização
-            com
-            Tokens JWT e muito mais. O código fonte do projeto pode ser acessado clicando no link Github no menu
-            lateral.
-            <br /><br /> Fique a vontade para testar o sistema e deixar sua sugestão.
-            <br /> At.te: Valdir cezar de Jesus
+        <p> <br /> <br />
+            {{ "home.welcomeMessage" | translate}} <a href="https://www.udemy.com/course/formacao-angular-spring-boot/"> LINK
+            </a> <br />
+            {{ "home.techListTitle" | translate}} <br />
         </p>
+
+        <div class="container">
+            <div class="column">
+                <p> {{"commom" | translate}} </p>
+                <ul>
+                    <li> {{'git'| translate}} </li>
+                    <li> {{'gitHub'| translate}} </li>
+                    <li> {{'backendDeploy'| translate}} </li>
+                    <li> {{'frontendDeploy'| translate}} </li>
+                </ul>
+            </div>
+            <div class="column">
+                <p> {{"backend" | translate}} </p>
+                <ul>
+                    <li> {{'javaVersion'| translate}} </li>
+                    <li> {{'springBootVersion'| translate}} </li>
+                    <li> {{'springDataJpa'| translate}} </li>
+                    <li> {{'hibernate'| translate}} </li>
+                    <li> {{'springBootSecurity'| translate}} </li>
+                    <li> {{'auth20'| translate}} </li>
+                    <li> {{'jwt'| translate}} </li>
+                    <li> {{'maven'| translate}} </li>
+                </ul>
+            </div>
+            <div class="column">
+                <p> {{"frontend" | translate}} </p>
+                <ul>
+                    <li> {{'angularVersion'| translate}} </li>
+                    <li> {{'angularMaterialVersion'| translate}} </li>
+                    <li> {{'nodeJS'| translate}} {{'typeScript'| translate}} </li>
+                    <li> {{'ngxTranslate'| translate}} </li>
+                    <li> {{'ngx-toastr'| translate}} </li>
+                </ul>
+            </div>
+        </div>
     </mat-card-content>
 </mat-card>

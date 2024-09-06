@@ -1,4 +1,26 @@
 {
+    "author": "Rafael Brum Cabral",
+    "javaVersion": "Java 21",
+    "springBootVersion": "Spring Boot 3.3.2",
+    "angularVersion": "Angular 18",
+    "angularMaterialVersion": "Angular Material 18",
+    "springDataJpa": "Spring Data JPA",
+    "hibernate": "Hibernate",
+    "springBootSecurity": "Spring Boot Security",
+    "auth20": "Auth 2.0",
+    "jwt": "JWT - JSON Web Tokens",
+    "typeScript": "TypeScript",
+    "nodeJS": "Node JS",
+    "maven": "Maven",
+    "git": "Git",
+    "gitHub": "GitHub",
+    "backendDeploy": "Backend Deploy: Heroku",
+    "frontendDeploy": "Frontend Deploy: Vercel",
+    "ngxTranslate": "Ngx-Translate",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "ngx-toastr": "Ngx-Toastr",
+    "commom": "Comum",
     "filterNotFound": "Não foram encontrados dados para a pesquisa",
     "search": "Pesquisar",
     "cancel": "Cancelar",
@@ -77,5 +99,10 @@
         "logout": "Sair",
         "githubFrontend": "Github Frontend",
         "githubBackend": "Github Backend"
+    },
+    "home": {
+        "title": "Projeto CRUD Spring 3 - Angular 18",
+        "welcomeMessage": "Esse projeto foi desenvolvido durante e tem seu código inspirado no curso \"Formação Angular + Spring Boot\", de Valdir Cezar, disponível em",
+        "techListTitle": "Ele apresenta um CRUD como base de aprendizado para as seguintes técnologias:"
     }
 }
